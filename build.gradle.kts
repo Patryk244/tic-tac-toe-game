@@ -13,7 +13,7 @@ repositories {
     mavenCentral()
 }
 
-val junitVersion = "5.12.1"
+val junitVersion = "5.10.0"
 
 java {
     toolchain {
@@ -38,12 +38,13 @@ javafx {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testImplementation(platform("org.junit:junit-bom:$junitVersion"))
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
+  //  jvmArgs("--add-modules=javafx.controls")
 }
-
 jlink {
     imageZip.set(layout.buildDirectory.file("/distributions/app-${javafx.platform.classifier}.zip"))
     options.set(listOf("--strip-debug", "--compress", "2", "--no-header-files", "--no-man-pages"))

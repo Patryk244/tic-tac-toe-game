@@ -9,19 +9,23 @@ import java.io.IOException;
 
 public class SceneManger {
 
-    private final Stage stage;
+    private static Stage primaryStage;
 
-    public SceneManger(Stage stage) {
-        this.stage = stage;
+    public static void setStage(Stage stage) {
+        primaryStage = stage;
     }
 
-    public void switchScene(String fxmlFile) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-        Parent root = loader.load();
-        Scene scene = new Scene(root, 400,300);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-        stage.setScene(scene);
-        stage.setTitle("Tic Tac Toe Game");
-        stage.show();
+    public static Object switchScene(String fxmlFile) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneManger.class.getResource(fxmlFile));
+            Parent root = loader.load();
+            Scene scene = new Scene(root, 1200, 800);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+            return loader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

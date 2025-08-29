@@ -5,16 +5,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.12"
-      styleClass="root-box">
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml"
+      styleClass="root-box"
+      fx:controller="org.example.tictactoegame.ChoiceController"
+      stylesheets="@styles.css">
 
     <Label text="Choose board size:" styleClass="label"/>
 
     <HBox styleClass="button-row">
         <children>
-            <Button text="3x3"/>
-            <Button text="6x6"/>
-            <Button text="9x9"/>
+            <Button fx:id="small" text="3 x 3" onAction="#smallBoard"/>
+            <Button fx:id="medium" text="6 x 6" onAction="#mediumBoard"/>
+            <Button fx:id="big" text="8 x 8" onAction="#bigBoard"/>
         </children>
     </HBox>
 </VBox>

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.example.tictactoegame.GameController"
-      stylesheets="@board-small.css"
-      styleClass="root-box">
+      stylesheets="@board.css"
+      styleClass="root-box"
+      spacing="20">
 
     <Label text="Tic Tac Toe" styleClass="label"/>
 
-    <GridPane hgap="10" vgap="10" alignment="CENTER">
+    <HBox alignment="CENTER" spacing="20">
 
-        <Button text="" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="button"/>
-        <Button text="" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="button"/>
-        <Button text="" GridPane.rowIndex="0" GridPane.columnIndex="2" styleClass="button"/>
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="Player X" styleClass="label"/>
+            <Label fx:id="scoreX" text="0" styleClass="score-label"/>
+        </VBox>
 
-        <Button text="" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="button"/>
-        <Button text="" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="button"/>
-        <Button text="" GridPane.rowIndex="1" GridPane.columnIndex="2" styleClass="button"/>
+        <GridPane fx:id="gameBoard" hgap="5" vgap="5" alignment="CENTER"/>
 
-        <Button text="" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="button"/>
-        <Button text="" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="button"/>
-        <Button text="" GridPane.rowIndex="2" GridPane.columnIndex="2" styleClass="button"/>
-
-    </GridPane>
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="Player O" styleClass="label"/>
+            <Label fx:id="scoreO" text="0" styleClass="score-label"/>
+        </VBox>
+    </HBox>
 </VBox>
